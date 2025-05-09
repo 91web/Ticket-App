@@ -17,8 +17,8 @@ const fadeAnimation = keyframes`
 const AppHome = () => {
   const router = useRouter();
   const [typedText, setTypedText] = useState("");
-    const [index, setIndex] = useState(0);
-    
+  const [index, setIndex] = useState(0);
+
   const fullText = "Ticket App";
 
   useEffect(() => {
@@ -63,17 +63,17 @@ const AppHome = () => {
           }}
         />
       </Box>
-    <Typography
-      sx={{
-        mt: 2,
-        color: "#171C33",
-        fontFamily: "inter",
-        fontSize: { xs: 20, md: 25 },
-        fontWeight: 600,
-      }}
-    >
-      {typedText}
-    </Typography>
+      <Typography
+        sx={{
+          mt: 2,
+          color: "#171C33",
+          fontFamily: "inter",
+          fontSize: { xs: 20, md: 25 },
+          fontWeight: 600,
+        }}
+      >
+        {typedText}
+      </Typography>
     </Box>
   );
 };

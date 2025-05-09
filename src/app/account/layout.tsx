@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Logo from "../../assets/img/ticket-logo.png";
 import Image from "next/image";
 import Button from "@mui/material/Button";
-
+import Footer from "../components/footer";
 interface LayoutProps {
   children: ReactNode;
 }
@@ -60,6 +60,7 @@ const Layout = ({ children }: LayoutProps) => {
       </AppBar>
 
       {children}
+      <Footer />
     </Box>
   );
 };

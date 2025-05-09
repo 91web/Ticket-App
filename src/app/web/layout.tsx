@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import DNavbar from "../components/appbar";
 import MNavbar from "../components/m.nav";
-
+import Footer from "../components/footer";
 interface LayoutProps {
   children: ReactNode;
 }
@@ -20,6 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
       </AppBar>
 
       {children}
+      <Footer />
     </Box>
   );
 };
