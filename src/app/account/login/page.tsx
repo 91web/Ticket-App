@@ -24,8 +24,25 @@ const LoginPage = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
 
+  const passwordRegex =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isEmailValid = emailRegex.test(email);
+  const isPasswordValid = passwordRegex.test(password);
+  const isFormValid = isEmailValid && isPasswordValid;
+
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isEmailValid) {
+      toast.error("Please provide a valid email", { style: { background: "#171C33", color: "#fff" } });
+    }
+    if (!isPasswordValid) {
+      toast.error("Password must be at least 8 characters long and include uppercase, lowercase, number and special character", { style: { background: "#171C33", color: "#fff" } });
+    }
+    if (!isEmailValid || !isPasswordValid) {
+      return;
+    }
     setIsLoading(true);
 
     try {
