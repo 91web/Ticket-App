@@ -32,7 +32,7 @@ export default function DNavbar() {
         sx={{
           backgroundColor: "#171C33",
           position: "relative", // Ensures z-index works
-          zIndex: 1200,
+          zIndex: (theme) => theme.zIndex.drawer - 1,
         }}
       >
         <Toolbar>
@@ -99,7 +99,12 @@ export default function DNavbar() {
       </AppBar>
       {/* Mobile menu container - positioned absolutely */}
       {open && (
-        <Box sx={{ position: "relative", zIndex: 150 }}>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+          }}
+        >
           <MNav onClose={() => setOpen(false)} />
         </Box>
       )}

@@ -4,10 +4,10 @@ import Typography from "@mui/material/Typography";
 
 const WebHome = () => {
     return (
-        <div>
-        <h1>Web Home</h1>
-        <p>Welcome to the web home page!</p>
-        </div>
+        <Box>
+        <Typography variant="h1">Web Home</Typography>
+        <Typography variant="body1">Welcome to the web home page!</Typography>
+        </Box>
     );
 }
 

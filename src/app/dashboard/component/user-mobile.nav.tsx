@@ -28,22 +28,22 @@ export default function MNav({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <Box sx={{display: { xs: "flex", md: "none" }, position:'relative' }}>
-      <Drawer anchor="right" open={true} onClose={onClose}
+    <Box sx={{ display: { xs: "flex", md: "none" }, position: "relative" }}>
+      <Drawer
+        anchor="right"
+        open={true}
+        onClose={onClose}
         sx={{
-          '& .MuiDrawer-paper': {
-            width: '80%',
-            maxWidth: '150px',
-            backgroundColor: '#171C33',
-            mt: '66px', // Adjust this value based on your AppBar height
-          }
-        }} >
-        <Box
-          bgcolor={"#171C33" }
-          height="70vh"
-          padding="16px"
-      
-        >
+          "& .MuiDrawer-paper": {
+            width: "80%",
+            maxWidth: "150px",
+            backgroundColor: "#171C33",
+            mt: "66px", // Adjust this value based on your AppBar height
+            zIndex: (theme) => theme.zIndex.drawer,
+          },
+        }}
+      >
+        <Box bgcolor={"#171C33"} height="70vh" padding="16px">
           <List>
             {NavLinks.map((link) => (
               <ListItemButton
