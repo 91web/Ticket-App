@@ -12,7 +12,7 @@ export default function DashboardLayout({
   return (
     <Box>
       <DNavbar />
-      <Container maxWidth="lg">{children}</Container>
+      <main>{children}</main>
       <Footer />
     </Box>
   );

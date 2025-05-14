@@ -1,9 +1,9 @@
 import React from 'react'
 
-const UserDashboard = () => {
+const USerHome = () => {
   return (
-    <div>UserDashboard</div>
+    <div>USerHome</div>
   )
 }
 
-export default UserDashboard
+export default USerHome

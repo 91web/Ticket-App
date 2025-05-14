@@ -31,10 +31,8 @@ const Footer = () => {
       component={"footer"}
       sx={{
         bottom: 0,
-
         backgroundColor: "#f0f0f0",
         py: 4,
-        mt: 4,
       }}
     >
       <Container maxWidth="lg">

@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -13,18 +13,19 @@ import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Link from "next/link";
-import Logo from "../../../assets/img/ticket-logo.png";
-import Image from "next/image";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const NavLinks: AppNavType[] = AppNav;
 
 export default function MNav({ onClose }: { onClose: () => void }) {
   const router = useRouter();
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   const handleNav = (href: string) => {
     href === pathname ? router.refresh() : router.push(href);
-    onClose();
+    setOpen(false);
   };
 
   return (
@@ -43,7 +44,12 @@ export default function MNav({ onClose }: { onClose: () => void }) {
           },
         }}
       >
-        <Box bgcolor={"#171C33"} height="70vh" padding="16px">
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <IconButton onClick={onClose}>
+            <CloseIcon sx={{ color: "#fff" }} />
+          </IconButton>
+        </Box>
+        <Box bgcolor={"#171C33"} height="65vh" padding="16px">
           <List>
             {NavLinks.map((link) => (
               <ListItemButton
