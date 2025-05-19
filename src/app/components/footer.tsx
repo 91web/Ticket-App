@@ -16,15 +16,22 @@ import Image from "next/image";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 
-const NavLinks: AppNavType[] = AppNav;
 
-const Footer = () => {
+
+function Footer() {
+  const NavLinks: AppNavType[] = AppNav;
   const router = useRouter();
   const pathname = usePathname();
 
   const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    }
   };
+
+
 
   return (
     <Box
@@ -126,7 +133,7 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          {/* Fouth Column: Navbar */}
+          {/* Fourth Column: App Management */}
           <Grid size={{ xs: 12, md: 3 }}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Typography
@@ -213,6 +220,6 @@ const Footer = () => {
       </Container>
     </Box>
   );
-};
+}
 
 export default Footer;

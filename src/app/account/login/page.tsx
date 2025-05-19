@@ -124,18 +124,18 @@ const LoginPage = () => {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                                  slotProps={{
-                      input: {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={() => setShowPassword((prev) => !prev)}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                                          ),
+                  slotProps={{
+                    input: {
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowPassword((prev) => !prev)}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
                     },
                   }}
                 />
@@ -199,7 +199,7 @@ const LoginPage = () => {
         </Box>
         <Box display="flex" justifyContent="center" gap={2} mt={5}>
           <Typography variant="body2">
-            Don't have Account?{" "}
+            Don&apos;t have Account?{" "}
             <Link
               href="/account/register/"
               style={{

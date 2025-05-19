@@ -2,7 +2,7 @@
 import { useRouter, usePathname } from "next/navigation";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { AppNav, AppNavType } from "../../components/static-data/data";
+//import { AppNav, AppNavType } from "../../components/static-data/data";
 import Logo from "../../../assets/img/ticket-logo.png";
 import Image from "next/image";
 import { useState } from "react";
@@ -11,21 +11,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MNav from "./user-mobile.nav";
 import Toolbar from "@mui/material/Toolbar";
 import AppBar from "@mui/material/AppBar";
-const NavLinks: AppNavType[] = AppNav;
 
-export default function DNavbar() {
+function DNavbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+
+  function handleNav(href: string) {
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    }
+  }
+
   return (
     <Box position="relative" zIndex={1200}>
-      {" "}
       {/* Increased z-index for navbar */}
       <AppBar
         position="static"
@@ -70,14 +71,12 @@ export default function DNavbar() {
                 Log Out
               </Button>
             </Box>
-            {/* Logo and other elements remain the same */}
             {/* Mobile menu button */}
             {!open && (
               <Box
                 sx={{
                   display: { xs: "block", md: "none" },
                   mt: 2,
-
                   position: "relative",
                   zIndex: 1300,
                 }}
@@ -111,3 +110,5 @@ export default function DNavbar() {
     </Box>
   );
 }
+
+export default DNavbar;

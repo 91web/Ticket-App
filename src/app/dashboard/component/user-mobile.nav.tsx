@@ -16,23 +16,34 @@ import Link from "next/link";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-const NavLinks: AppNavType[] = AppNav;
 
-export default function MNav({ onClose }: { onClose: () => void }) {
+
+function MNav({ onClose }: { onClose: () => void }) {
+  const NavLinks: AppNavType[] = AppNav;
   const router = useRouter();
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
-  const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
+  function handleNav(href: string) {
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    }
     setOpen(false);
-  };
+  }
+
+  function handleNavClick(url: string) {
+    return function () {
+      handleNav(url);
+    };
+  }
 
   return (
     <Box sx={{ display: { xs: "flex", md: "none" }, position: "relative" }}>
       <Drawer
         anchor="right"
-        open={true}
+        open={open}
         onClose={onClose}
         sx={{
           "& .MuiDrawer-paper": {
@@ -54,7 +65,7 @@ export default function MNav({ onClose }: { onClose: () => void }) {
             {NavLinks.map((link) => (
               <ListItemButton
                 key={link.url}
-                onClick={() => handleNav(link.url)}
+                onClick={handleNavClick(link.url)}
               >
                 <ListItemText
                   primary={link.label}
@@ -68,11 +79,9 @@ export default function MNav({ onClose }: { onClose: () => void }) {
                       color: "#fff",
                     },
                     ...(link.url === pathname && {
-                      // textDecoration: "underline",
                       textDecorationColor: "#5442dc",
-                      textUnderlineOffset: "2px", // added space to the underline
+                      textUnderlineOffset: "2px",
                     }),
-
                     "&::after": {
                       content: '""',
                       position: "absolute",
@@ -94,7 +103,7 @@ export default function MNav({ onClose }: { onClose: () => void }) {
           <Box textAlign={"center"} mt={2}>
             <Button
               variant="contained"
-              onClick={() => handleNav("/account/login")}
+              onClick={handleNavClick("/account/login")}
               sx={{
                 backgroundColor: "#FDCB6D",
                 color: "#000",
@@ -140,3 +149,5 @@ export default function MNav({ onClose }: { onClose: () => void }) {
     </Box>
   );
 }
+
+export default MNav;

@@ -6,14 +6,24 @@ import { AppNav, AppNavType } from "./static-data/data";
 import Logo from "../../assets/img/ticket-logo.png";
 import Image from "next/image";
 
-const NavLinks: AppNavType[] = AppNav;
+
 
 export default function DNavbar() {
-  const router = useRouter();
+
+  const NavLinks: AppNavType[] = AppNav;
   const pathname = usePathname();
   const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    }
   };
+
+  
+
+  const router: { push: (href: string) => void; refresh: () => void } =
+    useRouter();
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
       <Box>

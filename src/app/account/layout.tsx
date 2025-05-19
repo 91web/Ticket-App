@@ -13,10 +13,15 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const router = useRouter();
+
+  const router: { push: (href: string) => void; refresh: () => void } = useRouter();
   const pathname = usePathname();
   const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    }
   };
   return (
     <Box>

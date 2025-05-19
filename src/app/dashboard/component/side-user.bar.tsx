@@ -1,14 +1,14 @@
 "use client";
 import { useRouter, usePathname } from "next/navigation";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+//import IconButton from "@mui/material/IconButton";
+//import List from "@mui/material/List";
+//import ListItemButton from "@mui/material/ListItemButton";
+//import ListItemText from "@mui/material/ListItemText";
+//import MenuIcon from "@mui/icons-material/Menu";
+//import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import { AppNavType, AppNav } from "../../components/static-data/data";
+//import { AppNavType, AppNav } from "../../components/static-data/data";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -16,18 +16,22 @@ import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Link from "next/link";
-import Logo from "../../../assets/img/ticket-logo.png";
-import Image from "next/image";
+//import Logo from "../../../assets/img/ticket-logo.png";
+//import Image from "next/image";
 
-const NavLinks: AppNavType[] = AppNav;
+//const NavLinks: AppNavType[] = AppNav;
 
-export default function UserSideBar() {
+ function UserSideBar() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    };
     setOpen(false);
   };
 
@@ -94,3 +98,5 @@ export default function UserSideBar() {
     </Box>
   );
 }
+
+export default UserSideBar;

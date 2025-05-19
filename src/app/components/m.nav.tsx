@@ -21,16 +21,22 @@ import Link from "next/link";
 import Logo from "../../assets/img/ticket-logo.png";
 import Image from "next/image";
 
-const NavLinks: AppNavType[] = AppNav;
 
-export default function MNav() {
-  const router = useRouter();
+
+const MNav = () => {
+  const NavLinks: AppNavType[] = AppNav;
+
+  const router: { push: (href: string) => void; refresh: () => void } =
+    useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const handleNav = (href: string) => {
-    href === pathname ? router.refresh() : router.push(href);
-    setOpen(false);
+    if (href === pathname) {
+      router.refresh();
+    } else {
+      router.push(href);
+    }
   };
 
   return (
@@ -79,11 +85,9 @@ export default function MNav() {
                       color: "#fff",
                     },
                     ...(link.url === pathname && {
-                      // textDecoration: "underline",
                       textDecorationColor: "#5442dc",
-                      textUnderlineOffset: "2px", // added space to the underline
+                      textUnderlineOffset: "2px",
                     }),
-
                     "&::after": {
                       content: '""',
                       position: "absolute",
@@ -150,4 +154,6 @@ export default function MNav() {
       </Drawer>
     </Box>
   );
-}
+};
+
+export default MNav;
