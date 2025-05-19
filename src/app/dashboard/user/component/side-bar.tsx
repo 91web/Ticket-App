@@ -38,7 +38,7 @@ export default function SideBar() {
 
   return (
     <Box width={"200px"}>
-      <Box bgcolor={"#171C33"} height="80vh">
+      <Box bgcolor={"#171C33"} minHeight="50vh">
         <List>
           {UserDashLinks.map((link) => (
             <ListItemButton key={link.url} onClick={() => handleNav(link.url)}>
@@ -90,7 +90,7 @@ export default function SideBar() {
           ))}
         </List>
 
-        <Box display="flex" justifyContent="left" mt={30} gap={1} ml={2}>
+        <Box display="flex" justifyContent="left" my={10} gap={1} ml={2}>
           <Link
             href="https://www.facebook.com"
             target="_blank"

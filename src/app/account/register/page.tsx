@@ -87,8 +87,9 @@ const RegisterPage = () => {
       setTimeout(() => {
         router.push("/account/login");
       }, 5000);
-    } catch (err: any) {
-      toast.error(err.message || "Registration failed", {
+    } catch (err) {
+      const error = err as Error;
+      toast.error(error.message || "Registration failed", {
         style: { background: "#171C33", color: "#fff" },
       });
     } finally {

@@ -29,7 +29,7 @@ const LoginPage = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isEmailValid = emailRegex.test(email);
   const isPasswordValid = passwordRegex.test(password);
-  const isFormValid = isEmailValid && isPasswordValid;
+  //const isFormValid = isEmailValid && isPasswordValid;
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
